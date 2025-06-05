@@ -1,0 +1,33 @@
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: tcp-server
+    networks:
+      - secure-net
+
+  mitm:
+    build:
+      context: .
+      dockerfile: Dockerfile.mitm
+    container_name: tcp-mitm
+    depends_on:
+      - server
+    networks:
+      - secure-net
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: tcp-client
+    depends_on:
+      - mitm
+    networks:
+      - secure-net
+
+networks:
+  secure-net:
+    driver: bridge

@@ -1,0 +1,4 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY client/client_tcp.py .
+CMD ["python", "-u", "client_tcp.py"]
