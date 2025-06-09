@@ -1,0 +1,4 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY mitm/mitm_tls.py .
+CMD ["python", "-u", "mitm_tls.py"]

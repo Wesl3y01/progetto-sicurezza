@@ -27,6 +27,38 @@ services:
       - mitm
     networks:
       - secure-net
+  
+  tls-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server_tls
+    volumes:
+      - ./certs:/app/certs 
+    container_name: tls-server
+    networks:
+      - secure-net
+
+  tls-mitm:
+    build:
+      context: .
+      dockerfile: Dockerfile.mitm_tls
+    container_name: tls-mitm
+    depends_on:
+      - tls-server
+    networks:
+      - secure-net
+
+  tls-client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client_tls
+    container_name: tls-client
+    depends_on:
+      - tls-mitm
+    networks:
+      - secure-net
+
+
 
 networks:
   secure-net:
