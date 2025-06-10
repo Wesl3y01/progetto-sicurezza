@@ -28,10 +28,10 @@ docker-compose up --build
 ```
 Per rendere visibile il contrasto tra comunicazione in chiaro e cifrata, i client e server TLS vengono avviati qualche secondo dopo quelli TCP.
 
-#📄Certificati TLS
+## ▶️ Certificati TLS
 I certificati autofirmati cert.pem e key.pem sono generati tramite OpenSSL e montati nei container TLS.
 
-# Obiettivi dimostrati
--La comunicazione TCP può essere facilmente letta e modificata da un attaccante MITM.
--La comunicazione TLS, pur passando dallo stesso MITM, è completamente protetta: l’attaccante non può né leggere né alterare i dati.
--L'eventuale modifica dei dati cifrati da parte del MITM porta al fallimento del controllo d'integrità e all'interruzione della connessione.
+## Obiettivi dimostrati
+  - La comunicazione TCP può essere facilmente letta e modificata da un attaccante MITM.
+  - La comunicazione TLS, pur passando dallo stesso MITM, è completamente protetta: l’attaccante non può né leggere né alterare i dati.
+  - L'eventuale modifica dei dati cifrati da parte del MITM porta al fallimento del controllo d'integrità e all'interruzione della connessione.
