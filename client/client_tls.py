@@ -6,9 +6,11 @@ time.sleep(10)
 HOST = 'tls-mitm'  # Passa attraverso il MITM
 PORT = 9998    # Il MITM inoltra al server TLS su 12346
 
-context = ssl.create_default_context()
-context.check_hostname = False
-context.verify_mode = ssl.CERT_NONE  # Solo per test
+
+context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+context.load_verify_locations(cafile="certs/cert.pem")  # usa il certificato del server come CA
+context.check_hostname = False 
+context.verify_mode = ssl.CERT_REQUIRED
 
 with socket.create_connection((HOST, PORT)) as sock:
     with context.wrap_socket(sock, server_hostname='tls-server') as ssock:

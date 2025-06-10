@@ -52,6 +52,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.client_tls
+    volumes:
+      - ./certs/cert.pem:/app/certs/cert.pem
     container_name: tls-client
     depends_on:
       - tls-mitm
