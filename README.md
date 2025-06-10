@@ -1,5 +1,6 @@
 # progetto-sicurezza
-progetto per l'esame di sicurezza dell'informazione M
+Progetto per l'esame di Sicurezza dell'informazione M
+realizzato da Matteo Di Donato (n° matricola 0001191866)
 
 # Secure Communication
 
