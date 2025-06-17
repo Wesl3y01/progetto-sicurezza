@@ -31,6 +31,10 @@ Per rendere visibile il contrasto tra comunicazione in chiaro e cifrata, i clien
 
 ## ▶️ Certificati TLS
 I certificati autofirmati cert.pem e key.pem sono generati tramite OpenSSL e montati nei container TLS.
+```bash
+openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 365 \
+-subj "/CN=server"
+```
 
 ## Obiettivi dimostrati
   - La comunicazione TCP può essere facilmente letta e modificata da un attaccante MITM.
